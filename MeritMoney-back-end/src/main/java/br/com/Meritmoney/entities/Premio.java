@@ -21,7 +21,7 @@ public class Premio implements Serializable {
 	@Column(length = 50)
 	private String nome;
 	@Column(length = 15)
-	private int valor;
+	private Integer valor;
 	@Column(length = 150)
 	private String descricao;
 //	@Column(length = 15)
@@ -31,7 +31,7 @@ public class Premio implements Serializable {
 
 	}
 
-	public Premio(Integer id, String nome, int valor, String descricao) {
+	public Premio(Integer id, String nome, Integer valor, String descricao) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -55,7 +55,7 @@ public class Premio implements Serializable {
 		this.nome = nome;
 	}
 
-	public int getValor() {
+	public Integer getValor() {
 		return valor;
 	}
 

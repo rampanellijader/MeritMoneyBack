@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.Meritmoney.entities.Parametro;
 import br.com.Meritmoney.entities.Premio;
 import br.com.Meritmoney.entities.Usuario;
 import br.com.Meritmoney.services.PremioService;
@@ -55,8 +56,13 @@ public class PremioResource {
 	}
 	
 	@RequestMapping(value = "/{id}",method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody @Valid Premio premio, @PathVariable Integer id) {		
+	public ResponseEntity<Void> update(@RequestBody @Valid Premio premio, @PathVariable Integer id) {	
+		Premio obj = service.findByID(id);		
 		premio.setId(id);
+		premio.setNome(premio.getNome() == null ? obj.getNome() : premio.getNome());
+		premio.setValor(premio.getValor() == null ? obj.getValor() : premio.getValor());
+		premio.setDescricao(premio.getDescricao() == null ? obj.getDescricao() : premio.getDescricao());
+		
 		premio = service.save(premio);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(premio.getId()).toUri();
 		return ResponseEntity.created(uri).build();

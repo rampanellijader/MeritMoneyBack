@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.Meritmoney.entities.Parametro;
 import br.com.Meritmoney.entities.Usuario;
 import br.com.Meritmoney.services.UsuarioService;
 
@@ -53,11 +54,18 @@ public class UsuarioResource {
 	
 	@RequestMapping(value = "/{id}",method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody @Valid Usuario usuario, @PathVariable Integer id) {
+		Usuario obj = service.findByID(id);		
+		usuario.setId(id);
+		usuario.setNome(usuario.getNome() == null ? obj.getNome() : usuario.getNome());
+		usuario.setLogin(usuario.getLogin() == null ? obj.getLogin() : usuario.getLogin());
+		usuario.setSenha(usuario.getSenha() == null ? obj.getSenha() : usuario.getSenha());
+		usuario.setCollaboratorCoin(usuario.getCollaboratorCoin() == null ? obj.getCollaboratorCoin() : usuario.getCollaboratorCoin());
+		usuario.setSkillCoin(usuario.getSkillCoin() == null ? obj.getSkillCoin() : usuario.getSkillCoin());
+		usuario.setPerfil(usuario.getPerfil() == null ? obj.getPerfil() : usuario.getPerfil());		
 		
-			usuario.setId(id);
-			usuario = service.save(usuario);
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();
-			return ResponseEntity.created(uri).build();
+		usuario = service.save(usuario);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();
+		return ResponseEntity.created(uri).build();
 	}
 	
 	

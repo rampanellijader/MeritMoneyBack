@@ -53,8 +53,11 @@ public class ParametroResource {
 	}
 	@RequestMapping(value = "/{id}",method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody @Valid Parametro parametro, @PathVariable Integer id) {
-		
+		Parametro obj = service.findByID(id);		
 		parametro.setId(id);
+		parametro.setNome(parametro.getNome() == null ? obj.getNome() : parametro.getNome());
+		parametro.setValor(parametro.getValor() == null ? obj.getValor() : parametro.getValor());	
+		
 		parametro = service.save(parametro);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(parametro.getId()).toUri();
 		return ResponseEntity.created(uri).build();

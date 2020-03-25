@@ -24,9 +24,9 @@ public class Usuario implements Serializable {
 	@Column(length = 60)
 	private String senha;
 	@Column(length = 15)
-	private int CollaboratorCoin;
+	private Integer CollaboratorCoin;
 	@Column(length = 15)
-	private int SkillCoin;
+	private Integer SkillCoin;
 	@Column(length = 20)
 	private String perfil;
 	
@@ -34,15 +34,15 @@ public class Usuario implements Serializable {
 
 	}
 
-	public Usuario(Integer id, String nome, String login, String senha, int collaboratorCoin, int skillCoin,
+	public Usuario(Integer id, String nome, String login, String senha, Integer collaboratorCoin, Integer skillCoin,
 			String perfil) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.login = login;
 		this.senha = senha;
-		CollaboratorCoin = collaboratorCoin;
-		SkillCoin = skillCoin;
+		this.CollaboratorCoin = collaboratorCoin;
+		this.SkillCoin = skillCoin;
 		this.perfil = perfil;
 	}
 
@@ -78,7 +78,7 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public int getCollaboratorCoin() {
+	public Integer getCollaboratorCoin() {
 		return CollaboratorCoin;
 	}
 
@@ -86,7 +86,7 @@ public class Usuario implements Serializable {
 		CollaboratorCoin = collaboratorCoin;
 	}
 
-	public int getSkillCoin() {
+	public Integer getSkillCoin() {
 		return SkillCoin;
 	}
 
