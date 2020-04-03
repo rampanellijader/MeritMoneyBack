@@ -10,7 +10,8 @@
 </ul>
 <p><strong>Back-End</strong></p>
 <ul>
-<li>Spring</li>
+<li>Spring Boot</li>
+  <li>Java</li> 
 </ul>
 <p><strong>Controle de vers&atilde;o</strong></p>
 <ul>
