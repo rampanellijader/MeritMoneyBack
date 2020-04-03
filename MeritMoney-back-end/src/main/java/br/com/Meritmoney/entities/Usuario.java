@@ -1,11 +1,16 @@
 package br.com.Meritmoney.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario implements Serializable {
@@ -24,11 +29,17 @@ public class Usuario implements Serializable {
 	@Column(length = 60)
 	private String senha;
 	@Column(length = 15)
-	private Integer CollaboratorCoin;
+	private int CollaboratorCoin;
 	@Column(length = 15)
-	private Integer SkillCoin;
-	@Column(length = 20)
-	private String perfil;
+	private int SkillCoin;
+		
+	@ManyToOne
+	private Perfil perfil;
+	
+
+
+	@OneToMany(mappedBy = "usuario")
+    private List<UsuarioPremio> UsuarioPremioList;
 	
 	public Usuario() {
 
@@ -41,10 +52,14 @@ public class Usuario implements Serializable {
 		this.nome = nome;
 		this.login = login;
 		this.senha = senha;
-		this.CollaboratorCoin = collaboratorCoin;
-		this.SkillCoin = skillCoin;
-		this.perfil = perfil;
+		CollaboratorCoin = collaboratorCoin;
+		SkillCoin = skillCoin;
+		
 	}
+
+
+
+
 
 	public Integer getId() {
 		return id;
@@ -78,7 +93,7 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public Integer getCollaboratorCoin() {
+	public int getCollaboratorCoin() {
 		return CollaboratorCoin;
 	}
 
@@ -86,21 +101,23 @@ public class Usuario implements Serializable {
 		CollaboratorCoin = collaboratorCoin;
 	}
 
-	public Integer getSkillCoin() {
+	public int getSkillCoin() {
 		return SkillCoin;
 	}
 
 	public void setSkillCoin(int skillCoin) {
 		SkillCoin = skillCoin;
 	}
-
-	public String getPerfil() {
+	
+	public Perfil getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(String perfil) {
+	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -130,7 +147,7 @@ public class Usuario implements Serializable {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", CollaboratorCoin="
-				+ CollaboratorCoin + ", SkillCoin=" + SkillCoin + ", perfil=" + perfil + "]";
+				+ CollaboratorCoin + ", SkillCoin=" + SkillCoin + "]";  //", perfil=" + perfil_id + "]";
 	}
 
 }

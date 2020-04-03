@@ -25,11 +25,7 @@ public UsuarioPremio() {
 	
 }
 
-
-
 private String data;
-
-
 
 @ManyToOne
 @JoinColumn(name = "usuario_id", referencedColumnName = "id")
@@ -38,8 +34,6 @@ private Usuario usuario;
 @ManyToOne
 @JoinColumn(name = "premio_id", referencedColumnName = "id")
 private Premio premio;
-
-
 
 @Column(name = "usuario_id", insertable = false, updatable = false)
 private Integer usuarioId;
