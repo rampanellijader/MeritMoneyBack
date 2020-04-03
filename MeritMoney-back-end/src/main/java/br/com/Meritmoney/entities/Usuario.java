@@ -34,8 +34,8 @@ public class Usuario implements Serializable {
 
 	}
 
-	public Usuario(Integer id, String nome, String login, String senha, Integer collaboratorCoin, Integer skillCoin,
-			String perfil) {
+	public Usuario(Integer id, String nome, String login, String senha, int collaboratorCoin, int skillCoin
+			) {
 		super();
 		this.id = id;
 		this.nome = nome;

@@ -1,6 +1,7 @@
 package br.com.Meritmoney.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,18 @@ public class UsuarioService {
 	public Usuario save(Usuario usuario) {		
 		return repository.saveAndFlush(usuario);
 	}
+	
+	
+	
+	//buscar por nome
+	public Usuario findByNome(String nome) {		
+		Usuario obj = repository.findByNome(nome);
+		if (obj == null) {
+			throw new ObjectNotFoundException("Objeto não localizado!");
+		}		
+		 return obj;
+	}
+	
+	
 	
 }

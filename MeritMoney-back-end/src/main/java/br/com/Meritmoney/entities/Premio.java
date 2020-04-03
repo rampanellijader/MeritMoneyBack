@@ -1,12 +1,14 @@
 package br.com.Meritmoney.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Premio implements Serializable {
@@ -26,6 +28,12 @@ public class Premio implements Serializable {
 	private String descricao;
 //	@Column(length = 15)
 //	private String Imagem;
+	
+	
+	
+	
+	 @OneToMany(mappedBy = "premio")
+	 private List<UsuarioPremio> UsuarioPremioList;
 	
 	public Premio() {
 
