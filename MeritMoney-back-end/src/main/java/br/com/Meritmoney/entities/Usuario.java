@@ -1,11 +1,16 @@
 package br.com.Meritmoney.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario implements Serializable {
@@ -27,15 +32,21 @@ public class Usuario implements Serializable {
 	private int CollaboratorCoin;
 	@Column(length = 15)
 	private int SkillCoin;
-	@Column(length = 20)
-	private String perfil;
+		
+	@ManyToOne
+	private Perfil perfil;
+	
+
+
+	@OneToMany(mappedBy = "usuario")
+    private List<UsuarioPremio> UsuarioPremioList;
 	
 	public Usuario() {
 
 	}
 
-	public Usuario(Integer id, String nome, String login, String senha, int collaboratorCoin, int skillCoin,
-			String perfil) {
+	public Usuario(Integer id, String nome, String login, String senha, int collaboratorCoin, int skillCoin
+			) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -43,8 +54,12 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 		CollaboratorCoin = collaboratorCoin;
 		SkillCoin = skillCoin;
-		this.perfil = perfil;
+		
 	}
+
+
+
+
 
 	public Integer getId() {
 		return id;
@@ -93,14 +108,16 @@ public class Usuario implements Serializable {
 	public void setSkillCoin(int skillCoin) {
 		SkillCoin = skillCoin;
 	}
-
-	public String getPerfil() {
+	
+	public Perfil getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(String perfil) {
+	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -130,7 +147,7 @@ public class Usuario implements Serializable {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", CollaboratorCoin="
-				+ CollaboratorCoin + ", SkillCoin=" + SkillCoin + ", perfil=" + perfil + "]";
+				+ CollaboratorCoin + ", SkillCoin=" + SkillCoin + "]";  //", perfil=" + perfil_id + "]";
 	}
 
 }

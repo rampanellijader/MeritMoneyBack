@@ -21,50 +21,54 @@ private static final long serialVersionUID = 1L;
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Integer id;
 
-public UsuarioPremio(Integer id, String data, Usuario usuario, Premio premio, Integer idUsuario, Integer idPremio) {
-	super();
-	this.id = id;
-	this.data = data;
-	this.usuario = usuario;
-	this.premio = premio;
-	this.idUsuario = idUsuario;
-	this.idPremio = idPremio;
+public UsuarioPremio() {
+	
 }
+
+
 
 private String data;
 
 
 
 @ManyToOne
-@JoinColumn(name = "id_usuario", referencedColumnName = "id")
+@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 private Usuario usuario;
 
 @ManyToOne
-@JoinColumn(name = "id_premio", referencedColumnName = "id")
+@JoinColumn(name = "premio_id", referencedColumnName = "id")
 private Premio premio;
 
 
-@Column(name = "id_usuario", insertable = false, updatable = false)
-private Integer idUsuario;
 
-@Column(name = "id_premio", insertable = false, updatable = false)
-private Integer idPremio;
+@Column(name = "usuario_id", insertable = false, updatable = false)
+private Integer usuarioId;
 
+@Column(name = "premio_id", insertable = false, updatable = false)
+private Integer premioId;
 
 public Integer getId() {
 	return id;
 }
 
+public Integer getUsuarioId() {
+	return usuarioId;
+}
+
+public void setUsuarioId(Integer usuarioId) {
+	this.usuarioId = usuarioId;
+}
+
+public Integer getPremioId() {
+	return premioId;
+}
+
+public void setPremioId(Integer premioId) {
+	this.premioId = premioId;
+}
+
 public void setId(Integer id) {
 	this.id = id;
-}
-
-public Integer getIdUsuario() {
-    return usuario == null ? null : usuario.getId();
-}
-
-public Integer getIdPremio() {
-    return premio == null ? null : premio.getId();
 }
 
 public String getData() {
@@ -76,10 +80,9 @@ public void setData(String data) {
 }
 
 
-@Override
-public String toString() {
-	return "UsuarioPremio [id=" + id + ", data=" + data + ", usuario=" + usuario + ", premio=" + premio
-			+ ", idUsuario=" + idUsuario + ", idPremio=" + idPremio + "]";
-}
+
+
+
+
 
 }

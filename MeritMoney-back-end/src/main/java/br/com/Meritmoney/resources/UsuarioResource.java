@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.Meritmoney.entities.Perfil;
+import br.com.Meritmoney.entities.Premio;
 import br.com.Meritmoney.entities.Usuario;
 import br.com.Meritmoney.services.UsuarioService;
 
@@ -35,6 +37,15 @@ public class UsuarioResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Usuario> findById(@PathVariable Integer id){
 		Usuario obj = service.findByID(id);
+		return ResponseEntity.ok(obj);
+		
+		
+	}
+	
+	//buscar por nome
+	@GetMapping(value = "/{nome}")
+	public ResponseEntity<Usuario> findByNome(@PathVariable String nome){
+		Usuario obj = service.findByNome(nome);
 		return ResponseEntity.ok(obj);
 	}
 	
@@ -59,6 +70,9 @@ public class UsuarioResource {
 			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();
 			return ResponseEntity.created(uri).build();
 	}
+	
+	
+	
 	
 	
 
