@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,9 +28,9 @@ public class Usuario implements Serializable {
 	@Column(length = 60)
 	private String senha;
 	@Column(length = 15)
-	private int CollaboratorCoin;
+	private Integer CollaboratorCoin;
 	@Column(length = 15)
-	private int SkillCoin;
+	private Integer SkillCoin;
 		
 	@ManyToOne
 	private Perfil perfil;
@@ -45,7 +44,7 @@ public class Usuario implements Serializable {
 
 	}
 
-	public Usuario(Integer id, String nome, String login, String senha, int collaboratorCoin, int skillCoin
+	public Usuario(Integer id, String nome, String login, String senha, Integer collaboratorCoin, Integer skillCoin
 			) {
 		super();
 		this.id = id;
@@ -105,7 +104,7 @@ public class Usuario implements Serializable {
 		return SkillCoin;
 	}
 
-	public void setSkillCoin(int skillCoin) {
+	public void setSkillCoin(Integer skillCoin) {
 		SkillCoin = skillCoin;
 	}
 	

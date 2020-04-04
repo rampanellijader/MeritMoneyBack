@@ -15,12 +15,6 @@ public class UsuarioPremioService {
 	@Autowired
 	private UsuarioPremioRepository repository;
 	
-	@Autowired
-	private UsuarioService usuario;
-	
-	@Autowired
-	private PremioService premio;
-	
 	public List<UsuarioPremio> findAll(){		
 		return repository.findAll();
 	}
