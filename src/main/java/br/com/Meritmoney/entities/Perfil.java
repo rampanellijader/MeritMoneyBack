@@ -32,7 +32,7 @@ public class Perfil implements Serializable{
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-
+  
 */
 	public Integer getId() {
 		return id;
