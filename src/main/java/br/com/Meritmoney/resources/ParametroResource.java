@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.Meritmoney.entities.Parametro;
-import br.com.Meritmoney.entities.Usuario;
 import br.com.Meritmoney.services.ParametroService;
+import io.swagger.annotations.Api;
 
+@Api(tags="Parâmetro endpoint")
 @RestController
 @RequestMapping(value = "/parametro")
 public class ParametroResource {

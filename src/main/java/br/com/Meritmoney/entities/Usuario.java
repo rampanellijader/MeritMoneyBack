@@ -38,12 +38,6 @@ public class Usuario implements Serializable {
 	private Perfil perfil;
 	
 
-/*
-	@OneToMany(mappedBy="usuario")
-    private List<UsuarioPremio> UsuarioPremioList;
-	
-	*/
-	
 	public Usuario() {
 
 	}

@@ -1,7 +1,6 @@
 package br.com.Meritmoney.resources;
 
 import java.net.URI;
-
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,7 +17,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.Meritmoney.entities.UsuarioPremio;
 import br.com.Meritmoney.services.UsuarioPremioService;
+import io.swagger.annotations.Api;
 
+@Api(tags="Usuário-Prêmio endpint")
 @RestController
 @RequestMapping(value = "/usuario_premio")
 public class UsuarioPremioResource {

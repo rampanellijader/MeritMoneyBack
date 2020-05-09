@@ -21,19 +21,7 @@ public class Perfil implements Serializable{
 	private String nome;
 	
 
-/*
-	@OneToMany(mappedBy = "perfil")
-	private List<Usuario> usuarios;
-	
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-  
-*/ 
 	public Integer getId() {
 		return id;
 	}
