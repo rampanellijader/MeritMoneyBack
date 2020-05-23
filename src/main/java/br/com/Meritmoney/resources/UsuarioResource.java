@@ -1,5 +1,7 @@
 package br.com.Meritmoney.resources;
 
+
+
 import java.net.URI;
 import java.util.List;
 
@@ -18,7 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.Meritmoney.entities.Usuario;
 import br.com.Meritmoney.services.UsuarioService;
 import io.swagger.annotations.Api;
-@Api(tags = "Usuario endpoint")
+@Api(tags="Usuario endpoint")
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioResource {
@@ -41,10 +43,10 @@ public class UsuarioResource {
 		
 	}
 	
-	//buscar por nome
-	@GetMapping(value = "/{nome}")
-	public ResponseEntity<Usuario> findByNome(@PathVariable String nome){
-		Usuario obj = service.findByNome(nome);
+	//buscar por login
+	@GetMapping(value = "/login{login}")
+	public ResponseEntity<Usuario> findByLogin(@PathVariable String usuario){
+		Usuario obj =  service.findByLogin(usuario);
 		return ResponseEntity.ok(obj);
 	}
 	
@@ -66,7 +68,7 @@ public class UsuarioResource {
 		Usuario obj = service.findByID(id);		
 		usuario.setId(id);
 		usuario.setNome(usuario.getNome() == null ? obj.getNome() : usuario.getNome());
-		usuario.setLogin(usuario.getLogin() == null ? obj.getLogin() : usuario.getLogin());
+		usuario.setUsuario(usuario.getUsuario() == null ? obj.getUsuario() : usuario.getUsuario());
 		usuario.setSenha(usuario.getSenha() == null ? obj.getSenha() : usuario.getSenha());
 		usuario.setCollaboratorCoin(usuario.getCollaboratorCoin() == null ? obj.getCollaboratorCoin() : usuario.getCollaboratorCoin());
 		usuario.setSkillCoin(usuario.getSkillCoin() == null ? obj.getSkillCoin() : usuario.getSkillCoin());

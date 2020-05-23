@@ -71,8 +71,7 @@
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.9.2</version>
 		</dependency>
-		
-			
+				
 		<!-- Swagger formata documentação-->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -80,7 +79,7 @@
 			<version>2.9.2</version>
 		</dependency>
 		
-
+			
 	</dependencies>
 
 	<build>

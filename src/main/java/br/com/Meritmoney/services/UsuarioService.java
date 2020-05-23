@@ -1,6 +1,7 @@
 package br.com.Meritmoney.services;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,14 +41,26 @@ public class UsuarioService {
 	
 	
 	
-	//buscar por nome
-	public Usuario findByNome(String nome) {		
-		Usuario obj = repository.findByNome(nome);
+	//buscar por login
+	public Usuario findByLogin(String usuario) {		
+		Usuario obj = repository.findByLogin(usuario);
 		if (obj == null) {
-			throw new ObjectNotFoundException("Objeto não localizado!");
+			throw new ObjectNotFoundException("Usuario" + usuario + "não localizado!");
 		}		
 		 return obj;
 	}
+	
+	
+	
+
+
+	
+	public UsuarioService(UsuarioRepository repository) {
+		
+		this.repository = repository;
+	}
+
+	
 	
 	
 	

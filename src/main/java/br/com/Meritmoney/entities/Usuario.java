@@ -1,18 +1,17 @@
 package br.com.Meritmoney.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Usuario implements Serializable {
+public class Usuario implements  Serializable {
 
 	/**
 	 * 
@@ -24,7 +23,7 @@ public class Usuario implements Serializable {
 	@Column(length = 30)
 	private String nome;
 	@Column(length = 60)
-	private String login;
+	private String usuario;
 	@Column(length = 60)
 	private String senha;
 	
@@ -33,21 +32,23 @@ public class Usuario implements Serializable {
 	private Integer CollaboratorCoin;
 	@Column(length = 15)
 	private Integer SkillCoin;
-		
+	
+	
 	@ManyToOne
+	@JoinColumn(name="perfil_id")
 	private Perfil perfil;
 	
+
 
 	public Usuario() {
 
 	}
 
-	public Usuario(Integer id, String nome, String login, String senha, Integer collaboratorCoin, Integer skillCoin
+	public Usuario(Integer id, String nome, String usuario, String senha, Integer collaboratorCoin, Integer skillCoin
 			) {
-		super();
 		this.id = id;
 		this.nome = nome;
-		this.login = login;
+		this.usuario = usuario;
 		this.senha = senha;
 		CollaboratorCoin = collaboratorCoin;
 		SkillCoin = skillCoin;
@@ -74,23 +75,6 @@ public class Usuario implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	
 
 
 	public Integer getCollaboratorCoin() {
@@ -118,16 +102,23 @@ public class Usuario implements Serializable {
 	}
 	
 	
-/*
-	public List<UsuarioPremio> getUsuarioPremioList() {
-		return UsuarioPremioList;
+	
+
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUsuarioPremioList(List<UsuarioPremio> usuarioPremioList) {
-		UsuarioPremioList = usuarioPremioList;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
-*/
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 	@Override
 	public int hashCode() {
@@ -156,8 +147,11 @@ public class Usuario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", CollaboratorCoin="
+		return "Usuario [id=" + id + ", nome=" + nome + ", usuario=" + usuario + ", senha=" + senha + ", CollaboratorCoin="
 				+ CollaboratorCoin + ", SkillCoin=" + SkillCoin + "]";  //", perfil=" + perfil_id + "]";
 	}
+
+	
+
 
 }

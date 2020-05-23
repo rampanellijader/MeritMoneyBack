@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +20,9 @@ public class Perfil implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	
+	 @OneToMany(mappedBy = "perfil", targetEntity= Usuario.class, fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	  private List<Usuario> usuarios;
 	
 
 

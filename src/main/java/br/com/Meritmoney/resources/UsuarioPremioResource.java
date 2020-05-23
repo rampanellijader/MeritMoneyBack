@@ -19,7 +19,7 @@ import br.com.Meritmoney.entities.UsuarioPremio;
 import br.com.Meritmoney.services.UsuarioPremioService;
 import io.swagger.annotations.Api;
 
-@Api(tags="Usuário-Prêmio endpint")
+@Api(tags="Usuário-Prêmio endpoint")
 @RestController
 @RequestMapping(value = "/usuario_premio")
 public class UsuarioPremioResource {

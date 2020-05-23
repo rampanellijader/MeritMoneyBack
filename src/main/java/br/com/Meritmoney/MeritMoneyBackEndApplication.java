@@ -8,6 +8,8 @@ public class MeritMoneyBackEndApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MeritMoneyBackEndApplication.class, args);
+		
+		
 	}
 
 }
