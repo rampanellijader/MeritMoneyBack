@@ -43,12 +43,14 @@ public class UsuarioResource {
 		
 	}
 	
-	//buscar por login
-	@GetMapping(value = "/login{login}")
-	public ResponseEntity<Usuario> findByLogin(@PathVariable String usuario){
-		Usuario obj =  service.findByLogin(usuario);
+		
+	//buscar por email
+	@GetMapping(value = "/email/{email}")
+	public ResponseEntity<Usuario> findByEmail(@PathVariable String email){
+		Usuario obj =  service.findByEmail(email);
 		return ResponseEntity.ok(obj);
 	}
+	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
@@ -69,10 +71,11 @@ public class UsuarioResource {
 		usuario.setId(id);
 		usuario.setNome(usuario.getNome() == null ? obj.getNome() : usuario.getNome());
 		usuario.setUsuario(usuario.getUsuario() == null ? obj.getUsuario() : usuario.getUsuario());
+		usuario.setEmail(usuario.getEmail() == null ? obj.getEmail() : usuario.getEmail());
 		usuario.setSenha(usuario.getSenha() == null ? obj.getSenha() : usuario.getSenha());
 		usuario.setCollaboratorCoin(usuario.getCollaboratorCoin() == null ? obj.getCollaboratorCoin() : usuario.getCollaboratorCoin());
 		usuario.setSkillCoin(usuario.getSkillCoin() == null ? obj.getSkillCoin() : usuario.getSkillCoin());
-		usuario.setPerfil(usuario.getPerfil() == null ? obj.getPerfil() : usuario.getPerfil());		
+			
 		
 		usuario = service.save(usuario);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri();

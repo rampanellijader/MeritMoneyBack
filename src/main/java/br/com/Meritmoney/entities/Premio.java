@@ -3,8 +3,10 @@ package br.com.Meritmoney.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,13 +29,13 @@ public class Premio implements Serializable {
 	private Integer valor;
 	@Column(length = 150)
 	private String descricao;
-//	@Column(length = 15)
-//	private String Imagem;
+	@Column(length = 15)
+	private String Imagem;
 	
 	
 	
 	
-	 @OneToMany
+	 @OneToMany(mappedBy = "premio", targetEntity= UsuarioPremio.class, fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	 private List<UsuarioPremio> UsuarioPremioList;
 	
 	public Premio() {

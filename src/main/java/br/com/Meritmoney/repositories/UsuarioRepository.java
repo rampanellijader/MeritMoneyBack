@@ -11,7 +11,8 @@ import br.com.Meritmoney.entities.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-	@Query("SELECT u from Usuario u where u.usuario =: usuario")
-	Usuario findByLogin(@Param("login") String usuario);
+	
+	@Query("SELECT u from Usuario u where u.email=:email")
+	Usuario findByEmail(@Param("email")String email);
 
 }

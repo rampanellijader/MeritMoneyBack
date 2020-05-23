@@ -25,9 +25,9 @@ public class Usuario implements  Serializable {
 	@Column(length = 60)
 	private String usuario;
 	@Column(length = 60)
+	private String email;
+	@Column(length = 60)
 	private String senha;
-	
-	
 	@Column(length = 15)
 	private Integer CollaboratorCoin;
 	@Column(length = 15)
@@ -44,14 +44,16 @@ public class Usuario implements  Serializable {
 
 	}
 
-	public Usuario(Integer id, String nome, String usuario, String senha, Integer collaboratorCoin, Integer skillCoin
+	public Usuario(Integer id, String nome, String usuario, String email, String senha, Integer collaboratorCoin, Integer skillCoin
 			) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
-		CollaboratorCoin = collaboratorCoin;
-		SkillCoin = skillCoin;
+		this.CollaboratorCoin = collaboratorCoin;
+		this.SkillCoin = skillCoin;
+		this.email =  email;
+		
 		
 	}
 
@@ -119,6 +121,15 @@ public class Usuario implements  Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 
 	@Override
 	public int hashCode() {
