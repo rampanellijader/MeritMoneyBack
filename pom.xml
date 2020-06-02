@@ -79,6 +79,13 @@
 			<version>2.9.2</version>
 		</dependency>
 		
+		
+		<!-- PostgreSQL-->
+		<dependency>
+		  <groupId>org.postgresql</groupId>
+		  <artifactId>postgresql</artifactId>
+		</dependency>
+		
 			
 	</dependencies>
 

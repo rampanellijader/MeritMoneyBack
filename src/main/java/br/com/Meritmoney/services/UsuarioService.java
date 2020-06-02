@@ -51,6 +51,17 @@ public class UsuarioService {
 			 return obj;
 		}
 	
+		
+
+		//buscar por Login
+			public Usuario findByLogin(String login) {		
+				Usuario obj = repository.findByLogin(login);
+				if (obj == null) {
+					throw new ObjectNotFoundException("Usuario" + login + "não localizado!");
+				}		
+				 return obj;
+			}
+		
 	
 	
 	

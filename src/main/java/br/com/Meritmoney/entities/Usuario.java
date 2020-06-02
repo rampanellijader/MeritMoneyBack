@@ -23,7 +23,7 @@ public class Usuario implements  Serializable {
 	@Column(length = 30)
 	private String nome;
 	@Column(length = 60)
-	private String usuario;
+	private String login;
 	@Column(length = 60)
 	private String email;
 	@Column(length = 60)
@@ -44,11 +44,11 @@ public class Usuario implements  Serializable {
 
 	}
 
-	public Usuario(Integer id, String nome, String usuario, String email, String senha, Integer collaboratorCoin, Integer skillCoin
+	public Usuario(Integer id, String nome, String login, String email, String senha, Integer collaboratorCoin, Integer skillCoin
 			) {
 		this.id = id;
 		this.nome = nome;
-		this.usuario = usuario;
+		this.login = login;
 		this.senha = senha;
 		this.CollaboratorCoin = collaboratorCoin;
 		this.SkillCoin = skillCoin;
@@ -106,12 +106,12 @@ public class Usuario implements  Serializable {
 	
 	
 
-	public String getUsuario() {
-		return usuario;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getSenha() {
@@ -158,7 +158,7 @@ public class Usuario implements  Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", usuario=" + usuario + ", senha=" + senha + ", CollaboratorCoin="
+		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", CollaboratorCoin="
 				+ CollaboratorCoin + ", SkillCoin=" + SkillCoin + "]";  //", perfil=" + perfil_id + "]";
 	}
 

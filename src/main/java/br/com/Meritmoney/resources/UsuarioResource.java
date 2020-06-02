@@ -52,6 +52,14 @@ public class UsuarioResource {
 	}
 	
 	
+	//buscar por login
+	@GetMapping(value = "/login/{login}")
+	public ResponseEntity<Usuario> findByLogin(@PathVariable String login){
+		Usuario obj =  service.findByLogin(login);
+		return ResponseEntity.ok(obj);
+	}
+	
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.deleteByID(id);
@@ -70,7 +78,7 @@ public class UsuarioResource {
 		Usuario obj = service.findByID(id);		
 		usuario.setId(id);
 		usuario.setNome(usuario.getNome() == null ? obj.getNome() : usuario.getNome());
-		usuario.setUsuario(usuario.getUsuario() == null ? obj.getUsuario() : usuario.getUsuario());
+		usuario.setLogin(usuario.getLogin() == null ? obj.getLogin() : usuario.getLogin());
 		usuario.setEmail(usuario.getEmail() == null ? obj.getEmail() : usuario.getEmail());
 		usuario.setSenha(usuario.getSenha() == null ? obj.getSenha() : usuario.getSenha());
 		usuario.setCollaboratorCoin(usuario.getCollaboratorCoin() == null ? obj.getCollaboratorCoin() : usuario.getCollaboratorCoin());
