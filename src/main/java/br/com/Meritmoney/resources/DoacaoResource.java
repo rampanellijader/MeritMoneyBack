@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.Meritmoney.entities.Doacao;
 import br.com.Meritmoney.services.DoacaoService;
 import io.swagger.annotations.Api;
+
+@CrossOrigin
 @Api(tags="Doação endpoint")
 @RestController
 @RequestMapping(value = "/doacao")
@@ -27,7 +30,7 @@ public class DoacaoResource {
 	@Autowired
 	private DoacaoService service;
 	
-	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Doacao>> findAll() {
 
@@ -35,18 +38,21 @@ public class DoacaoResource {
 		return ResponseEntity.ok(doacao);
 	}
 	
+	@CrossOrigin
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Doacao> findById(@PathVariable Integer id){
 		Doacao obj = service.findByID(id);
 		return ResponseEntity.ok(obj);
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.deleteByID(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Doacao obj) {
 		Doacao doacao = service.save(obj);
@@ -54,6 +60,7 @@ public class DoacaoResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value = "/{id}",method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody @Valid Doacao doacao, @PathVariable Integer id) {	
 		Doacao obj = service.findByID(id);		
@@ -68,7 +75,4 @@ public class DoacaoResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(doacao.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
-	
-
 }

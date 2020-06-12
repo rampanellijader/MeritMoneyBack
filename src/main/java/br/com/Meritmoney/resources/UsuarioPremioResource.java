@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import br.com.Meritmoney.entities.UsuarioPremio;
 import br.com.Meritmoney.services.UsuarioPremioService;
 import io.swagger.annotations.Api;
 
+@CrossOrigin
 @Api(tags="Usuário-Prêmio endpoint")
 @RestController
 @RequestMapping(value = "/usuario_premio")
@@ -27,26 +29,29 @@ public class UsuarioPremioResource {
 	@Autowired
 	private UsuarioPremioService service;
 	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<UsuarioPremio>> findAll() {
 
 		List<UsuarioPremio> usuarios = service.findAll();
 		return ResponseEntity.ok(usuarios);
 	}
-
+	
+	@CrossOrigin
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UsuarioPremio> findById(@PathVariable Integer id){
 		UsuarioPremio obj = service.findByID(id);
 		return ResponseEntity.ok(obj);
 	}
 
-	
+	@CrossOrigin
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.deleteByID(id);
 		return ResponseEntity.noContent().build();
 	}
 
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody UsuarioPremio obj) {
 		UsuarioPremio usuarioPremio = service.save(obj);
@@ -54,6 +59,7 @@ public class UsuarioPremioResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value = "/{id}",method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody @Valid UsuarioPremio usuarioPremio, @PathVariable Integer id) {
 		

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ import br.com.Meritmoney.entities.Premio;
 import br.com.Meritmoney.services.PremioService;
 import io.swagger.annotations.Api;
 
-
+@CrossOrigin
 @Api(tags="Prêmio endpoint")
 @RestController
 @RequestMapping(value = "/premio")
@@ -27,14 +28,16 @@ public class PremioResource {
 
 	@Autowired
 	private PremioService service;
-
+	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Premio>> findAll() {
 
 		List<Premio> premio = service.findAll();
 		return ResponseEntity.ok(premio);
 	}
-
+	
+	@CrossOrigin
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Premio> findById(@PathVariable Integer id){
 		Premio obj = service.findByID(id);
@@ -42,22 +45,21 @@ public class PremioResource {
 	}
 	
 	//buscar por nome
-		@GetMapping(value = "/nome/{nome}")
-		public ResponseEntity<Premio> findByNome(@PathVariable String nome){
-			Premio obj = service.findByNome(nome);
-			return ResponseEntity.ok(obj);
-		}
+	@CrossOrigin
+	@GetMapping(value = "/nome/{nome}")
+	public ResponseEntity<Premio> findByNome(@PathVariable String nome){
+		Premio obj = service.findByNome(nome);
+		return ResponseEntity.ok(obj);
+	}
 	
-	
-	
-	
-	
+	@CrossOrigin
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.deleteByID(id);
 		return ResponseEntity.noContent().build();
 	}
-
+	
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Premio obj) {
 		Premio premio = service.save(obj);
@@ -65,6 +67,7 @@ public class PremioResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value = "/{id}",method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody @Valid Premio premio, @PathVariable Integer id) {	
 		Premio obj = service.findByID(id);		

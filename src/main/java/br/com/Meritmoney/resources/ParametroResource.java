@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import br.com.Meritmoney.entities.Parametro;
 import br.com.Meritmoney.services.ParametroService;
 import io.swagger.annotations.Api;
 
+@CrossOrigin
 @Api(tags="Parâmetro endpoint")
 @RestController
 @RequestMapping(value = "/parametro")
@@ -26,7 +28,8 @@ public class ParametroResource {
 
 	@Autowired
 	private ParametroService service;
-
+	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Parametro>> findAll() {
 
@@ -34,6 +37,7 @@ public class ParametroResource {
 		return ResponseEntity.ok(parametro);
 	}
 
+	@CrossOrigin
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Parametro> findById(@PathVariable Integer id){
 		Parametro obj = service.findByID(id);
