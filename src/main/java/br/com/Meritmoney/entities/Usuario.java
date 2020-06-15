@@ -36,7 +36,7 @@ public class Usuario implements  Serializable {
 	private Integer CollaboratorCoin;
 	@Column(length = 15)
 	private Integer SkillCoin;
-	
+	private String data;
 	
 	@ManyToOne
 	@JoinColumn(name="perfil_id")
@@ -110,7 +110,13 @@ public class Usuario implements  Serializable {
 		this.perfil = perfil;
 	}
 	
+	public String getData() {
+		return data;
+	}
 	
+	public void setData(String data) {
+		this.data = data;
+	}
 	
 
 	public String getLogin() {

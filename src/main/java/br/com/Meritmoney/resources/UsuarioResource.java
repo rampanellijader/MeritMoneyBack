@@ -42,6 +42,19 @@ public class UsuarioResource {
 	}
 	
 		
+	//Login
+	@CrossOrigin
+	@GetMapping(value = "/Logar/{login}/{senha}")
+	public ResponseEntity<Usuario> findByLogin(@PathVariable String login,@PathVariable String senha){
+		Usuario obj =  service.findByLogin(login);		
+		if(obj.getSenha().equals(senha)){
+			return ResponseEntity.ok(obj);
+		}else {
+			obj = null;
+			return ResponseEntity.ok(obj);
+		}		
+	}
+	
 	//buscar por email
 	@CrossOrigin
 	@GetMapping(value = "/email/{email}")
@@ -49,7 +62,6 @@ public class UsuarioResource {
 		Usuario obj =  service.findByEmail(email);
 		return ResponseEntity.ok(obj);
 	}
-	
 	
 	//buscar por login
 	@CrossOrigin
