@@ -44,6 +44,13 @@ public class PremioResource {
 		return ResponseEntity.ok(obj);
 	}
 	
+	
+	@CrossOrigin
+	@GetMapping(value = "/EnviaEmail/{emailUsuario}/{emailRH}/{textoEmail}")
+	public void enviaEmail(@PathVariable String emailUsuario,@PathVariable String emailRH,@PathVariable String textoEmail){
+		service.enviaEmail(emailUsuario, emailRH,  textoEmail);
+	}
+
 	//buscar por nome
 	@CrossOrigin
 	@GetMapping(value = "/nome/{nome}")
