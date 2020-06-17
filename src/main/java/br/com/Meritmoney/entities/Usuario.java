@@ -1,5 +1,6 @@
 package br.com.Meritmoney.entities;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
@@ -37,6 +38,9 @@ public class Usuario implements  Serializable {
 	@Column(length = 15)
 	private Integer SkillCoin;
 	private String data;
+	private Boolean status;
+	@Column(length = 100000)
+	private String img2;
 	
 	@ManyToOne
 	@JoinColumn(name="perfil_id")
@@ -59,14 +63,8 @@ public class Usuario implements  Serializable {
 		this.senha = senha;
 		this.CollaboratorCoin = collaboratorCoin;
 		this.SkillCoin = skillCoin;
-		this.email =  email;
-		
-		
+		this.email =  email;		
 	}
-
-
-
-
 
 	public Integer getId() {
 		return id;
@@ -75,7 +73,15 @@ public class Usuario implements  Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public String getImg2() {
+		return img2;
+	}
 
+	public void setImg2(String img2) {
+		this.img2 = img2;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -83,8 +89,14 @@ public class Usuario implements  Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public Boolean getStatus() {
+		return status;
+	}
 
-
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
 
 	public Integer getCollaboratorCoin() {
 		return CollaboratorCoin;
@@ -174,8 +186,5 @@ public class Usuario implements  Serializable {
 		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", CollaboratorCoin="
 				+ CollaboratorCoin + ", SkillCoin=" + SkillCoin + "]";  //", perfil=" + perfil_id + "]";
 	}
-
-	
-
 
 }
