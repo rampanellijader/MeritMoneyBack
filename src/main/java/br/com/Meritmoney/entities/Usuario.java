@@ -39,8 +39,8 @@ public class Usuario implements  Serializable {
 	private Integer SkillCoin;
 	private String data;
 	private Boolean status;
-	@Column(length = 100000)
-	private String img2;
+	@Column(length = 2000000)
+	private String img3;
 	
 	@ManyToOne
 	@JoinColumn(name="perfil_id")
@@ -74,12 +74,12 @@ public class Usuario implements  Serializable {
 		this.id = id;
 	}
 	
-	public String getImg2() {
-		return img2;
+	public String getImg3() {
+		return img3;
 	}
 
-	public void setImg2(String img2) {
-		this.img2 = img2;
+	public void setImg3(String img3) {
+		this.img3 = img3;
 	}
 	
 	public String getNome() {

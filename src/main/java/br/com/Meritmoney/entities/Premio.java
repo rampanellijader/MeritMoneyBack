@@ -31,7 +31,8 @@ public class Premio implements Serializable {
 	private String descricao;
 	@Column(length = 15)
 	private String Imagem;
-	
+	@Column(length = 2000000)
+	private String img;
 	
 	
 	
@@ -58,6 +59,15 @@ public class Premio implements Serializable {
 		this.id = id;
 	}
 
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
+	
 	public String getNome() {
 		return nome;
 	}
